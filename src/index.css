@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: rgb(248, 240, 229);
+  --color-navy: rgb(15, 44, 89);
+  --color-dark-beige-: rgb(218, 192, 163);
+  --color-beige: rgb(218, 192, 163);
+}
