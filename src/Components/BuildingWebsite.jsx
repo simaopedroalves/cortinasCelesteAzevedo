@@ -18,13 +18,13 @@ export default function BuildingWebsite () {
           <h4 className="underline mx-auto">Contactos</h4>
           <p className="font-bold cursor-pointer flex gap-4">
             Telemóvel:
-            <a href={`tel:${phoneNumber}`} className="hover:underline hover:text-navy"> 937 402 642</a>
+            <a href={`tel:${phoneNumber}`} className="hover:underline hover:text-navy">{phoneNumber}</a>
           </p>
           <p
             className="font-bold cursor-pointer flex gap-4"
           >
             Email:
-            <a href={`mailto:${email}`} className="hover:underline hover:text-navy">cortinascelesteazevedo@gmail.com</a>
+            <a href={`mailto:${email}`} className="hover:underline hover:text-navy">{email}</a>
           </p>
         </div>
       </>

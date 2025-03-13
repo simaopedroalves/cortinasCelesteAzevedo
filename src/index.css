@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: rgb(248, 240, 229);
   --color-navy: rgb(15, 44, 89);
-  --color-dark-beige-: rgb(218, 192, 163);
-  --color-beige: rgb(218, 192, 163);
+  --color-cream: rgb(248, 240, 229);
+  --color-beige: rgb(221, 168, 83);
+  --color-gray: rgb(30, 32, 30);
+}
+
+body {
+  font-family: 'Playfair', 'sans-serif';
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', 'serif';
 }
