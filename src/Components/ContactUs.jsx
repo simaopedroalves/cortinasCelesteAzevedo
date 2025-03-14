@@ -280,7 +280,7 @@ export default function ContactUs() {
           action="/contact"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name='Nova_Mensagem' value={`Nova mensagem de ${userFormSubmission.userStateName}`} data-remove-prefix/>
+          <input type="hidden" name='subject' value={`Nova mensagem de ${userFormSubmission.userStateName}`} data-remove-prefix/>
 
           <Input
             type="text"
