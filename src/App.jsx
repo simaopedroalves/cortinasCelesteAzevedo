@@ -72,6 +72,8 @@ function App() {
 
   function handleMenuOption(option) {
     console.log('option', option);
+    window.scrollTo(0,0)
+
     updateMenu();
     setDisplayContent(prevState => {
       return {
