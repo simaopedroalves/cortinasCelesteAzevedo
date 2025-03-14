@@ -247,6 +247,8 @@ export default function ContactUs() {
       .then(() => {
         // alert("Mensagem enviada com sucesso!");
         setMessage("Mensagem enviada com sucesso!");
+
+        <Message />
         setUserFormSubmission({
           userStateName: "",
           userStateEmail: "",
@@ -302,7 +304,7 @@ export default function ContactUs() {
             stateName="userStateMessage"
             onChangeValue={handleChangeInput}
           />
-          <Button type="submit">Enviar</Button>
+          <Button  type="submit">Enviar</Button>
         </form>
       </section>
     </>
