@@ -245,10 +245,8 @@ export default function ContactUs() {
       body: encodeFormData(formData),
     })
       .then(() => {
-        // alert("Mensagem enviada com sucesso!");
-        setMessage("Mensagem enviada com sucesso!");
+        alert("Mensagem enviada com sucesso!");
 
-        <Message />
         setUserFormSubmission({
           userStateName: "",
           userStateEmail: "",
@@ -257,8 +255,7 @@ export default function ContactUs() {
         });
       })
       .catch((error) => {
-        // alert();
-        setMessage("Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+        alert("Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
 
         console.error(error);
       });
