@@ -6,7 +6,7 @@ export default function Navbar ({onOpenMenu, onHome}) {
       <header className="w-screen p-2 bg-gray/50 fixed top-0 z-12">
         <nav className="flex justify-between">
           <img
-            src="/src/assets/logotipo.jpeg"
+            src="/public/logotipo.jpeg"
             alt="Logotipo"
             className="w-10 h-10 object-fit rounded-full my-auto sm:w-16 sm:h-16"
             onClick={() => onHome(0)}
