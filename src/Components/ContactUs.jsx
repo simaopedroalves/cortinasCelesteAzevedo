@@ -59,35 +59,36 @@ export default function ContactUs () {
                 dataIsInvalid: true
               }
             })
-        }
+      }
 
-  //       // Prepare form data for Netlify
-  // const formData = new FormData();
-  // formData.append("form-name", "Pedido-de-contacto");
-  // formData.append("userStateName", name);
-  // formData.append("userStateEmail", email);
-  // formData.append("userStateMessage", message);
+      // Prepare form data for Netlify
+      const formData = new URLSearchParams();
+      formData.append("form-name", "contact");
+      formData.append("userStateName", userStateName);
+      formData.append("userStateEmail", userStateEmail);
+      formData.append("userStateMessage", userStateMessage);
 
-  // Submit to Netlify
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: { "form-name": "contact", ...userFormSubmission }
-  })
-    .then(() => {
-      alert("Success!")
-      setUserFormSubmission(prevState => {
-        return {
-          ...prevState,
-          userStateName: '',
-          userStateEmail: '', 
-          userStateMessage: '',
-          dataIsInvalid: false
-        }
+      // Submit to Netlify
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
       })
-    })
-    .catch(error => alert(error));
-
+        .then(() => {
+          alert("PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!");
+          // Reset form
+          setUserFormSubmission({
+            userStateName: "",
+            userStateEmail: "",
+            userStateMessage: "",
+            dataIsInvalid: false,
+          });
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Erro ao enviar o formulário. Tente novamente.");
+        });
+    
 
         // alert('PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!')
 
@@ -115,7 +116,8 @@ export default function ContactUs () {
         {/* <form action="/mensagem" className="my-10 grid gap-6" netlify netlify-honeypot="bot-field" method="POST" name="mensagem"> */}
         <form onSubmit={onSubmitForm} netlify='true' className="my-10 grid gap-6" name='contact' method="POST">
        
-          <input type='hidden' name='form-name' value='mensagem'/>
+          <input type='hidden' name='form-name' value='contact'/>
+          <input type="hidden" name="bot-field" />
           <Input
             type='text'          
             label="Nome"
