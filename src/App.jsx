@@ -60,6 +60,7 @@ function App() {
 
   function handleOpenMenu() {
     console.log('cliked');
+    window.scrollTo(0,0)
 
     setDisplayContent(prevState => {
 

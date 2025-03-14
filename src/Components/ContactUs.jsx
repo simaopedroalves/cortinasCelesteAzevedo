@@ -72,9 +72,20 @@ export default function ContactUs () {
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: encode({ "form-name": "contact", ...userFormSubmission })
+    body: { "form-name": "contact", ...userFormSubmission }
   })
-    .then(() => alert("Success!"))
+    .then(() => {
+      alert("Success!")
+      setUserFormSubmission(prevState => {
+        return {
+          ...prevState,
+          userStateName: '',
+          userStateEmail: '', 
+          userStateMessage: '',
+          dataIsInvalid: false
+        }
+      })
+    })
     .catch(error => alert(error));
 
 
@@ -102,7 +113,7 @@ export default function ContactUs () {
         </h1>
         {/*  added a netlify-honeypot attribute to avoid showing a captcha when a user submits the form */}
         {/* <form action="/mensagem" className="my-10 grid gap-6" netlify netlify-honeypot="bot-field" method="POST" name="mensagem"> */}
-        <form onSubmit={onSubmitForm} netlify>
+        <form onSubmit={onSubmitForm} netlify='true' className="my-10 grid gap-6">
        
           <input type='hidden' name='form-name' value='mensagem'/>
           <Input
