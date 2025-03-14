@@ -162,7 +162,7 @@ export default function ContactUs() {
     dataIsInvalid: false,
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   function handleChangeInput(inputName, inputValue) {
     setUserFormSubmission((prevState) => {
@@ -173,30 +173,31 @@ export default function ContactUs() {
     });
   }
 
-  function handleMessageError() {
+  function handleMessage() {
     setUserFormSubmission((prevState) => {
       return {
         ...prevState,
         dataIsInvalid: false,
       };
     });
-    setErrorMessage(""); // Reset error message
+    setMessage(""); // Reset message
   }
 
-  function MessageError() {
+  function Message() {
     return (
       <div className="bg-beige absolute top-24 bottom-0 mx-6 z-10 grid items-center justify-center rounded-md">
         <p className="text-navy font-bold italic text-center uppercase">
           Impossível enviar!
         </p>
         <p className="text-navy font-bold italic text-center">
-          {errorMessage}
+          {message}
         </p>
-        <Button onClick={handleMessageError}>Fechar</Button>
+        <Button onClick={handleMessage}>Fechar</Button>
       </div>
     );
   }
 
+  // required to send form via netlify forms
   function encodeFormData(data) {
     return Object.keys(data)
       .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -216,7 +217,7 @@ export default function ContactUs() {
       email.trim() === "" ||
       message.trim() === ""
     ) {
-      setErrorMessage(
+      setMessage(
         "Dados inválidos. Verifique os dados inseridos e tente novamente."
       );
       setUserFormSubmission((prevState) => {
@@ -244,7 +245,8 @@ export default function ContactUs() {
       body: encodeFormData(formData),
     })
       .then(() => {
-        alert("Mensagem enviada com sucesso!");
+        // alert("Mensagem enviada com sucesso!");
+        setMessage("Mensagem enviada com sucesso!");
         setUserFormSubmission({
           userStateName: "",
           userStateEmail: "",
@@ -253,14 +255,16 @@ export default function ContactUs() {
         });
       })
       .catch((error) => {
-        alert("Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+        // alert();
+        setMessage("Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+
         console.error(error);
       });
   }
 
   return (
     <>
-      {userFormSubmission.dataIsInvalid && <MessageError />}
+      {userFormSubmission.dataIsInvalid && <Message />}
       <section className="p-12 bg-gray relative">
         <h1 className="text-cream text-3xl font-bold text-center">
           Contacte-nos
