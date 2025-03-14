@@ -275,8 +275,11 @@ export default function ContactUs() {
           name="contact"
           method="POST"
           data-netlify="true"
+          action="/contact"
         >
           <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name='Nova_Mensagem' value={`Nova mensagem de ${userFormSubmission.userStateName}`} data-remove-prefix/>
+
           <Input
             type="text"
             label="Nome"
