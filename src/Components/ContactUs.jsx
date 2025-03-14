@@ -69,7 +69,7 @@ export default function ContactUs () {
   formData.append("userStateMessage", message);
 
   // Submit to Netlify
-  fetch("/", {
+  fetch("/mensagem", {
     method: "POST",
     body: formData,
   })
