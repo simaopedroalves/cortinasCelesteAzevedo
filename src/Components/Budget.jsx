@@ -98,6 +98,9 @@ export default function Budget () {
         className="mt-10 grid gap-6"
         onSubmit={onSubmitForm}
       >
+          <input type="hidden" name="form-name" value="budget" />
+
+
         <h2 className="underline text-beige italic">Informação Pessoal:</h2>
         <Input
           type="text"
