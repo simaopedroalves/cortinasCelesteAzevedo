@@ -42,24 +42,24 @@ export default function ContactUs () {
       
     }
 
-  //   function onSubmitForm(event) {
-  //       event.preventDefault();
+    function onSubmitForm(event) {
+        event.preventDefault();
 
-  //       let name = userFormSubmission.userStateName;
-  //       let email = userFormSubmission.userStateEmail;
-  //       let message = userFormSubmission.userStateMessage;
+        let name = userFormSubmission.userStateName;
+        let email = userFormSubmission.userStateEmail;
+        let message = userFormSubmission.userStateMessage;
 
-  //       if(name.trim() === '' || 
-  //           email.trim() === '' ||
-  //           message.trim() === '') {
-  //           // alert('Imposivel enviar, dados invalidos. Verifica os dados inseridos e envia novamente'  )
-  //           setUserFormSubmission(prevState => {
-  //             return {
-  //               ...prevState,
-  //               dataIsInvalid: true
-  //             }
-  //           })
-  //       }
+        if(name.trim() === '' || 
+            email.trim() === '' ||
+            message.trim() === '') {
+            // alert('Imposivel enviar, dados invalidos. Verifica os dados inseridos e envia novamente'  )
+            setUserFormSubmission(prevState => {
+              return {
+                ...prevState,
+                dataIsInvalid: true
+              }
+            })
+        }
 
   //       // Prepare form data for Netlify
   // const formData = new FormData();
@@ -68,40 +68,29 @@ export default function ContactUs () {
   // formData.append("userStateEmail", email);
   // formData.append("userStateMessage", message);
 
-  // // Submit to Netlify
-  // fetch("/mensagem", {
-  //   method: "POST",
-  //   body: formData,
-  // })
-  //   .then(() => {
-  //     alert("PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!");
-  //     // Reset form
-  //     setUserFormSubmission({
-  //       userStateName: "",
-  //       userStateEmail: "",
-  //       userStateMessage: "",
-  //       dataIsInvalid: false,
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error submitting form:", error);
-  //     alert("Erro ao enviar o formulário. Tente novamente.");
-  //   });
+  // Submit to Netlify
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode({ "form-name": "contact", ...userFormSubmission })
+  })
+    .then(() => alert("Success!"))
+    .catch(error => alert(error));
 
 
-  //       // alert('PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!')
+        // alert('PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!')
 
-  //       // setTimeout(() => {
-  //       //   setUserFormSubmission(prevState => {
-  //       //   return {
-  //       //     ...prevState,
-  //       //     userStateName: '',
-  //       //     userStateEmail: '', 
-  //       //     userStateMessage: '',
-  //       //     dataIsInvalid: false
-  //       //   }
-  //       // })}, 2000)
-  //   }
+        // setTimeout(() => {
+        //   setUserFormSubmission(prevState => {
+        //   return {
+        //     ...prevState,
+        //     userStateName: '',
+        //     userStateEmail: '', 
+        //     userStateMessage: '',
+        //     dataIsInvalid: false
+        //   }
+        // })}, 2000)
+    }
 
     return (
       <>
@@ -113,7 +102,7 @@ export default function ContactUs () {
         </h1>
         {/*  added a netlify-honeypot attribute to avoid showing a captcha when a user submits the form */}
         {/* <form action="/mensagem" className="my-10 grid gap-6" netlify netlify-honeypot="bot-field" method="POST" name="mensagem"> */}
-        <form action="/" className="my-10 grid gap-6" method="POST" name="mensagem">
+        <form onSubmit={onSubmitForm} netlify>
        
           <input type='hidden' name='form-name' value='mensagem'/>
           <Input
@@ -143,7 +132,6 @@ export default function ContactUs () {
             <Button type='submit'>Enviar</Button>
 
         </form>
-        {/* form */}
       </section>
       </>
     );

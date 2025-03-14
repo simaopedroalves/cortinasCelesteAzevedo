@@ -22,7 +22,7 @@ function App() {
   });
   
   function updateMenu() {
-    window.scrollTo(0,0)
+    // window.scrollTo(0,0)
 
       if (window.innerWidth >= 768) {
         setDisplayContent(prevState => {
