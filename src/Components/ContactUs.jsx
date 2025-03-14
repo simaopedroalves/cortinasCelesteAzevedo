@@ -113,7 +113,7 @@ export default function ContactUs () {
         </h1>
         {/*  added a netlify-honeypot attribute to avoid showing a captcha when a user submits the form */}
         {/* <form action="/mensagem" className="my-10 grid gap-6" netlify netlify-honeypot="bot-field" method="POST" name="mensagem"> */}
-        <form onSubmit={onSubmitForm} netlify='true' className="my-10 grid gap-6">
+        <form onSubmit={onSubmitForm} netlify='true' className="my-10 grid gap-6" name='contact'>
        
           <input type='hidden' name='form-name' value='mensagem'/>
           <Input
