@@ -1,5 +1,5 @@
 import Input from "./Input.jsx";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Button from "./Button.jsx";
 
 export default function ContactUs () {
@@ -61,18 +61,46 @@ export default function ContactUs () {
             })
         }
 
-        alert('PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!')
+        // Prepare form data for Netlify
+  const formData = new FormData();
+  formData.append("form-name", "Pedido-de-contacto");
+  formData.append("userStateName", name);
+  formData.append("userStateEmail", email);
+  formData.append("userStateMessage", message);
 
-        setTimeout(() => {
-          setUserFormSubmission(prevState => {
-          return {
-            ...prevState,
-            userStateName: '',
-            userStateEmail: '', 
-            userStateMessage: '',
-            dataIsInvalid: false
-          }
-        })}, 2000)
+  // Submit to Netlify
+  fetch("/", {
+    method: "POST",
+    body: formData,
+  })
+    .then(() => {
+      alert("PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!");
+      // Reset form
+      setUserFormSubmission({
+        userStateName: "",
+        userStateEmail: "",
+        userStateMessage: "",
+        dataIsInvalid: false,
+      });
+    })
+    .catch((error) => {
+      console.error("Error submitting form:", error);
+      alert("Erro ao enviar o formulário. Tente novamente.");
+    });
+
+
+        // alert('PEDIDO DE CONTACTO, ENVIADO COM SUCESSO!')
+
+        // setTimeout(() => {
+        //   setUserFormSubmission(prevState => {
+        //   return {
+        //     ...prevState,
+        //     userStateName: '',
+        //     userStateEmail: '', 
+        //     userStateMessage: '',
+        //     dataIsInvalid: false
+        //   }
+        // })}, 2000)
     }
 
     return (
@@ -85,7 +113,7 @@ export default function ContactUs () {
         </h1>
         {/*  added a netlify-honeypot attribute to avoid showing a captcha when a user submits the form */}
         <form action="" className="my-10 grid gap-6" netlify netlify-honeypot="bot-field" method="post" name="Pedido-de-contacto">
-          <input type='hidden' name='Pedido-de-Contacto' value='Pedido_de_Contacto'/>
+          <input type='hidden' name='form-name' value='Pedido_de_Contacto'/>
           <Input
             type='text'          
             label="Nome"
