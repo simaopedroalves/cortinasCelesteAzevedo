@@ -41,7 +41,7 @@ export default function Budget () {
     const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType, placePhotos} = userFormSubmission;
    
     const formData = {
-      "form-name": 'budget',
+      "form-name": "budget",
       name: name,
       email: email,
       address: address,
@@ -93,7 +93,7 @@ export default function Budget () {
       <form
         action="/budget"
         name="budget"
-        method="post"
+        method="POST"
         data-netlify="true"
         className="mt-10 grid gap-6"
         onSubmit={onSubmitForm}
