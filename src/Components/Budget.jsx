@@ -53,11 +53,13 @@ export default function Budget () {
       courtainType: courtainType,
       placePhotos: [placePhotos],
     }
+    console.log(name, email);
+    
 
     fetch("/", {
       method: "POST",
       headers: {
-        "Countent-type": "application/x-www-form-urlencoded",
+        "Content-type": "application/x-www-form-urlencoded",
       },
       body: encodeFormData(formData),
     })
