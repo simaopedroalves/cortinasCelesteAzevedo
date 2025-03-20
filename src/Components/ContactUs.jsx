@@ -264,8 +264,8 @@ export default function ContactUs() {
   return (
     <>
       {userFormSubmission.dataIsInvalid && <Message />}
-      <section className="p-12 bg-gray relative">
-        <h1 className="text-cream text-3xl font-bold text-center">
+      <section className="py-12 px-[10vw] justify-center bg-gray relative md:py-20 md:px-[20vw] lg:py-30 lg:px-[30vw]">
+        <h1 className="text-beige text-3xl font-bold text-center md:text-6xl">
           Contacte-nos
         </h1>
         <form

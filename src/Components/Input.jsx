@@ -13,7 +13,7 @@ export default function Input({
 
   return (
     <p className="grid gap-2">
-      <label htmlFor={label} className="text-cream text-sm font-bold">
+      <label htmlFor={label} className="text-cream text-sm md:text-xl font-bold">
         {label}
       </label>
       {textarea ? (

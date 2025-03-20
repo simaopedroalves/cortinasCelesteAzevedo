@@ -43,7 +43,7 @@ export default function Footer ({handleClick}) {
             {/* links to menu options */}
             <ul className='grid gap-4 items-center mt-12'>
             {footerMenuOptions.map((item, index) => (
-                <li key={index} className='hover:underline cursor-pointer' onClick={() => handleClick(index)} >
+                <li key={index} className='hover:underline hover:text-beige cursor-pointer' onClick={() => handleClick(index)} >
                     {item}
                 </li>
                 ))
@@ -69,7 +69,7 @@ export default function Footer ({handleClick}) {
                 {footerContacts.map((item, index) => (
                     <li key={index} className='mt-4'>
                         <p className='mb-2'>{item.name}</p>
-                        <a href={`${item.prefix}${item.description}`} className='hover:underline p-0.5'>{item.description}</a>
+                        <a href={`${item.prefix}${item.description}`} className='hover:underline hover:text-beige p-0.5'>{item.description}</a>
                     </li>
                 ))}
             </ul>

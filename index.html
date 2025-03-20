@@ -21,7 +21,7 @@
       <textarea name="userStateMessage"></textarea>
     </form>
 
-    <form name="budget" method="POST" netlify netlify-honeypot="bot-field" hidden>
+    <form name="budget" method="POST" netlify netlify-honeypot="bot-field" hidden encType="multipart/form-data">
       <input type="hidden" name="form-name" value="budget" />
       <input type="text" name="name" />
       <input type="email" name="email" />
@@ -32,7 +32,7 @@
       <input type="text" name="courtainPlace" />
       <input type="text" name="courtainColor" />
       <input type="text" name="courtainType" />
-      <input type="text" name="courtainPhotos" />
+      <input type="file" name="courtainPhotos" />
     </form>
 
     <script type="module" src="/src/main.jsx"></script>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import BuildingWebsite from './Components/BuildingWebsite.jsx';
 import Navbar from './Components/Navbar/Navbar.jsx';
-import MenuOptions from './MenuOptions.jsx';
+import MenuOptions from './Components/MenuOptions.jsx';
 import About from './Components/About.jsx';
 import Footer from './Components/Footer.jsx';
 import HomePage from './Components/HomePage.jsx';
@@ -24,7 +24,7 @@ function App() {
   function updateMenu() {
     // window.scrollTo(0,0)
 
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setDisplayContent(prevState => {
           return {
             ...prevState,
@@ -108,7 +108,7 @@ function App() {
 
 
   return (
-   <main className= 'w-screen grid justify-center overflow-x-hidden'>
+   <main className= 'w-screen overflow-x-hidden'>
       {/* <BuildingWebsite /> */}
       <Navbar onOpenMenu={handleOpenMenu} onHome={handleMenuOption}/>
       {displayContent.navbar && <MenuOptions onclickOption={handleMenuOption}/>}

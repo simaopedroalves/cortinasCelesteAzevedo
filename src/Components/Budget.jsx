@@ -13,8 +13,7 @@ export default function Budget () {
     courtainWidth: "",
     courtainPlace: "",
     courtainColor: "",
-    courtainType: "",
-    placePhotos: [],
+    courtainType: ""
   });
 
   function handleChangeInput(inputName, inputValue) {
@@ -25,6 +24,15 @@ export default function Budget () {
       };
     });
   }
+
+  const [file, setFile] = useState([]);
+
+  function handleChangeFile(event) {
+    setFile(event.target.files[0]);
+    console.log(file);
+    
+  }
+
 
   // required to send form via netlify forms
   function encodeFormData(data) {
@@ -51,7 +59,7 @@ export default function Budget () {
       courtainPlace: courtainPlace,
       courtainColor: courtainColor,
       courtainType: courtainType,
-      placePhotos: [placePhotos],
+      placePhotos: placePhotos,
     }
     console.log(name, email);
     
@@ -99,6 +107,7 @@ export default function Budget () {
         data-netlify="true"
         className="mt-10 grid gap-6"
         onSubmit={onSubmitForm}
+        encType="multipart/form-data"
       >
           <input type="hidden" name="form-name" value="budget" />
 
@@ -178,9 +187,9 @@ export default function Budget () {
         <Input
           type="file"
           label="Anexar fotos (local da cortina)"
-          value={userFormSubmission.placePhotos}
+          value={file}
           stateName="placePhotos"
-          onChangeValue={handleChangeInput}
+          onChange={(event) => handleChangeFile(event.target)}
           multiple
           accept="image/*"
         />

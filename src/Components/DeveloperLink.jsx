@@ -9,7 +9,7 @@ export default function DeveloperLink () {
         href={devLink}
         target="_blank"
         rel="noreferrer"
-        className="hover:text-md transition-all duration-1000 text-xs"
+        className="hover:text-md hover:text-beige  transition-all duration-1000 text-xs"
       >
         Desenvolvido por {devName}
       </a>

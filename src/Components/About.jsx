@@ -1,15 +1,13 @@
 import myPhoto from '../assets/celeste-images/celeste.jpg';
 const imagesClass = 'object-cover h-[40vh] rounded-md md:w-1/4 mx-auto ';
-const divClass = 'mx-auto px-6 text-cream grid items-center gap-8 justify-center sm:flex sm:justify-around';
-
-
+const divClass = 'mx-auto px-6 text-cream grid items-center gap-8 justify-center md:gap-20';
 
 export default function About () {
 
     function AboutDiv ({image, text, title, inverted}) {
         return inverted ? (
           <div className={divClass}>
-            <h2 className='font-bold italic text-xl text-beige'>{title}</h2>
+            <h2 className='font-bold italic text-xl text-beige text-center md:text-4xl'>{title}</h2>
             <p className='text-justify'>{text}</p>
             <img
               src={image}
@@ -19,20 +17,20 @@ export default function About () {
           </div>
         ) : (
           <div className={divClass}>
-            <h2 className='font-bold italic text-xl text-beige'>{title}</h2>
+            <h2 className='font-bold italic text-xl text-beige text-center md:text-4xl'>{title}</h2>
             <img
               src={image}
               alt="Fotografia de Celeste"
               className={imagesClass}
             />
-            <p className='text-justify'>{text}</p>
+            <p className='text-justify md:px-40 md:text-xl lg:px-80 lg:text-2xl'>{text}</p>
           </div>
         );
     }
 
     return (
       <>
-        <section className="mx-auto bg-gray grid gap-6 justify-center pt-12 pb-12">
+        <section className="mx-auto bg-gray grid gap-6 justify-center items-center py-12 md:py-30 md:gap-60">
           {/* <h1 className="font-bold text-2xl text-cream text-center drop-shadow-md outline-0 border-0 bg-transparent">
             Sobre mim
           </h1> */}
