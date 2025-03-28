@@ -25,7 +25,7 @@ export default function Budget () {
     });
   }
 
-  const [file, setFile] = useState([]);
+  const [file, setFile] = useState();
 
   function handleChangeFile(event) {
     setFile(event.target.files[0]);
@@ -84,8 +84,8 @@ export default function Budget () {
         courtainPlace: "",
         courtainColor: "",
         courtainType: "",
-        placePhotos: [],
       });
+      setFile();
     })
     .catch((error) => {
       alert("Ocorreu um erro ao enviar o seu Orçamento. Tente novamente.");
@@ -95,7 +95,7 @@ export default function Budget () {
   }
 
   return (
-    <section className="p-12 bg-gray">
+    <section className="p-12 bg-gray md:p-28 ">
       <h1 className="text-beige text-3xl font-bold text-center">Orçamento</h1>
       {/* <p> Descrição sobre o que é o pedido de orçamento </p> */}
 
@@ -105,7 +105,7 @@ export default function Budget () {
         name="budget"
         method="POST"
         data-netlify="true"
-        className="mt-10 grid gap-6"
+        className="mt-10 grid gap-6 md:w-[50vw] mx-auto"
         onSubmit={onSubmitForm}
         encType="multipart/form-data"
       >

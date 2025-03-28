@@ -105,19 +105,19 @@ export default function TermsAndConditions () {
         }
     };
 
-    console.log(termsAndConditionsObject);
     
 
     return (
-      <section className="py-12 px-6 bg-gray grid gap-4 justify-center">
+      <section className="py-12 px-6 bg-gray grid gap-4 justify-center md:p-28 md:text-xl">
         <h1 className=" text-beige text-3xl font-bold text-center">
           Termos e condições
         </h1>
+        
         {Object.keys(termsAndConditionsObject).map((term) => (
-          <div
+        <div
             key={term}
-            className="border-2 border-beige p-4 my-2 rounded-lg grid gap-4"
-          >
+            className="border-2 border-beige p-4 my-2 rounded-lg grid gap-4 md:max-w-1/2 md:mx-auto"
+        >
             <h3 className="text-beige font-bold underline text-lg">
               {termsAndConditionsObject[term].title}
             </h3>
@@ -151,7 +151,7 @@ export default function TermsAndConditions () {
                   )}
                 </div>
               ))}
-          </div>
+        </div>
         ))}
       </section>
     );
