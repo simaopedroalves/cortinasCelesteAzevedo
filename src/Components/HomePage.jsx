@@ -1,4 +1,4 @@
-import imageOne from '../assets/cortinado-sala.jpg';
+import imageOne from '../assets/portfolio-images/cortinado-sala.jpg';
 import Image from './Image.jsx';
 import About from './About.jsx';
 import ContactUs from './ContactUs.jsx';

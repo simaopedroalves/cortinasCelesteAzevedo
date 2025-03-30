@@ -1,4 +1,7 @@
-import myPhoto from '../assets/celeste-images/celeste.jpg';
+import myPhoto from '../assets/celeste-images/celeste-4.jpg';
+import myPhotoTwo from '../assets/celeste-images/celeste-5.jpg';
+import myPhotoThree from '../assets/celeste-images/celeste-2.jpg';
+
 const imagesClass = 'object-cover h-[40vh] rounded-md md:w-1/4 mx-auto ';
 const divClass = 'mx-auto px-6 text-cream grid items-center gap-8 justify-center md:gap-20';
 
@@ -51,7 +54,7 @@ export default function About () {
 
           <AboutDiv 
             title='Precisão e Versatilidade'
-            image={myPhoto}
+            image={myPhotoTwo}
             text="Um dos maiores talentos da Celeste é a sua capacidade de olhar para uma peça de roupa e recriá-la 
             com precisão, mantendo a qualidade e o design originais. Esta habilidade, aliada à sua vasta experiência, 
             faz dela uma referência no setor.
@@ -63,7 +66,7 @@ export default function About () {
 
           <AboutDiv 
             title='Confiança e Satisfação'
-            image={myPhoto}
+            image={myPhotoThree}
             text="A Celeste tem experiência tanto no setor empresarial como no atendimento ao consumidor final, 
             o que lhe permite compreender as necessidades específicas de cada cliente. O seu compromisso com a qualidade, 
             o respeito pelos prazos e a atenção aos detalhes são valores que definem o seu trabalho.

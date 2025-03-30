@@ -6,6 +6,8 @@ export default function Input({
   label,
   onChangeValue,
   stateName,
+  type,
+  value,
   ...props
 }) {
 
@@ -21,15 +23,16 @@ export default function Input({
           {...props}
           type="text"
           id={label}
-          name={label}
+          name={stateName}
           className="bg-cream/60 rounded-md w-full text-sm p-2 text-white min-h-60"
           onChange={(event) => onChangeValue(stateName, event.target.value)}
         ></textarea>
       ) : select ? (
         <select
-          name={label}
+          name={stateName}
           id={label}
           className="bg-cream/60 rounded-md w-full text-sm p-2 text-white"
+          onChange={(event) => onChangeValue(stateName, event.target.value)}
         >
           {selectOptions.map((option, index) => (
             <option
@@ -45,10 +48,14 @@ export default function Input({
         <input
           className={inputClasses}
           id={label}
-          name={label}
-          onChange={(event) => {
-            onChangeValue(stateName, event.target.value)
-          }}
+          name={stateName}
+          onChange={(event) => 
+            {type === 'file' ? 
+              onChangeValue(stateName, event.target.files) 
+              : onChangeValue(stateName, event.target.value)
+            }
+          }
+          type={type}
           {...props}
           required
 

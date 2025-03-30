@@ -13,25 +13,36 @@ export default function Budget () {
     courtainWidth: "",
     courtainPlace: "",
     courtainColor: "",
-    courtainType: ""
+    courtainType: "",
+    placePhotos: ""
   });
 
   function handleChangeInput(inputName, inputValue) {
+    console.log(typeof(inputName), inputName, inputValue);
+    console.log(userFormSubmission);
+    
+    inputName === "placePhotos" ?
     setUserFormSubmission((prevState) => {
+      return {
+        ...prevState,
+        [inputName]: inputValue.name
+      };
+    })
+
+    : setUserFormSubmission((prevState) => {
       return {
         ...prevState,
         [inputName]: inputValue,
       };
     });
+
   }
 
-  const [file, setFile] = useState();
+  // const [file, setFile] = useState([]);
 
-  function handleChangeFile(event) {
-    setFile(event.target.files[0]);
-    console.log(file);
-    
-  }
+  // function handleChangeFile(event) {
+  //   setFile(event.files);  
+  // }
 
 
   // required to send form via netlify forms
@@ -61,7 +72,6 @@ export default function Budget () {
       courtainType: courtainType,
       placePhotos: placePhotos,
     }
-    console.log(name, email);
     
 
     fetch("/", {
@@ -84,8 +94,9 @@ export default function Budget () {
         courtainPlace: "",
         courtainColor: "",
         courtainType: "",
+        placePhotos: ""
       });
-      setFile();
+      // setFile();
     })
     .catch((error) => {
       alert("Ocorreu um erro ao enviar o seu Orçamento. Tente novamente.");
@@ -187,9 +198,10 @@ export default function Budget () {
         <Input
           type="file"
           label="Anexar fotos (local da cortina)"
-          value={file}
+          value={userFormSubmission.placePhotos}
           stateName="placePhotos"
-          onChange={(event) => handleChangeFile(event.target)}
+          // onChange={(event) => handleChangeFile(event.target.files)}
+          onChangeValue={handleChangeInput}
           multiple
           accept="image/*"
         />
