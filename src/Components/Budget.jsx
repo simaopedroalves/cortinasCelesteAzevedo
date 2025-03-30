@@ -18,8 +18,10 @@ export default function Budget () {
   });
 
   function handleChangeInput(inputName, inputValue) {
-    console.log(typeof(inputName), inputName, inputValue);
+
+    console.log(typeof(inputName), inputName, typeof(inputValue), inputValue);
     console.log(userFormSubmission);
+
     
     inputName === "placePhotos" ?
     setUserFormSubmission((prevState) => {

@@ -38,6 +38,7 @@ export default function Input({
             <option
               key={index}
               value={option}
+              name={option}
               className="bg-gray rounded-md w-1/2 text-sm p-2 text-beige"
             >
               {option}
