@@ -95,9 +95,11 @@ export default function Budget () {
     fetch("/", {
       method: "POST",
       headers: {
-        "Content-type": "application/x-www-form-urlencoded",
+        // "Content-type": "application/x-www-form-urlencoded",
+         "Accept": "application/x-www-form-urlencoded"
       },
-      body: encodeFormData(formData),
+      // body: encodeFormData(formData),
+      body: formData,
     })
     .then(() => {
       alert("Orçamento enviado com sucesso!");
@@ -130,10 +132,11 @@ export default function Budget () {
 
       {/* form submission */}
       <form
-        action="/budget"
+        // action="/budget"
         name="budget"
         method="POST"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
         className="mt-10 grid gap-6 md:w-[50vw] mx-auto"
         onSubmit={onSubmitForm}
         encType="multipart/form-data"
