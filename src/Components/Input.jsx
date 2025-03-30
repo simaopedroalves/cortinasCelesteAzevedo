@@ -7,7 +7,6 @@ export default function Input({
   onChangeValue,
   stateName,
   type,
-  value,
   ...props
 }) {
 

@@ -59,22 +59,38 @@ export default function Budget () {
   function onSubmitForm (event) {
     event.preventDefault();
 
-    const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType, placePhotos} = userFormSubmission;
+    // const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType, placePhotos} = userFormSubmission;
    
-    const formData = {
-      "form-name": "budget",
-      name: name,
-      email: email,
-      address: address,
-      phoneNumber: phoneNumber,
-      courtainHeight: courtainHeight,
-      courtainWidth: courtainWidth,
-      courtainPlace: courtainPlace,
-      courtainColor: courtainColor,
-      courtainType: courtainType,
-      placePhotos: placePhotos,
-    }
+    // const formData = {
+    //   "form-name": "budget",
+    //   name: name,
+    //   email: email,
+    //   address: address,
+    //   phoneNumber: phoneNumber,
+    //   courtainHeight: courtainHeight,
+    //   courtainWidth: courtainWidth,
+    //   courtainPlace: courtainPlace,
+    //   courtainColor: courtainColor,
+    //   courtainType: courtainType,
+    //   placePhotos: placePhotos,
+    // }
     
+
+        // Create FormData for file uploads
+        const formData = new FormData();
+        formData.append("form-name", "budget");
+        
+        // Append all form fields
+        Object.entries(userFormSubmission).forEach(([key, value]) => {
+          if (key === "placePhotos" && value) {
+            // Handle multiple files
+            for (let i = 0; i < value.length; i++) {
+              formData.append(key, value[i]);
+            }
+          } else {
+            formData.append(key, value);
+          }
+        });
 
     fetch("/", {
       method: "POST",
@@ -96,7 +112,7 @@ export default function Budget () {
         courtainPlace: "",
         courtainColor: "",
         courtainType: "",
-        placePhotos: ""
+        placePhotos: null
       });
       // setFile();
     })
@@ -200,7 +216,7 @@ export default function Budget () {
         <Input
           type="file"
           label="Anexar fotos (local da cortina)"
-          value={userFormSubmission.placePhotos}
+          // value={userFormSubmission.placePhotos}
           stateName="placePhotos"
           // onChange={(event) => handleChangeFile(event.target.files)}
           onChangeValue={handleChangeInput}
