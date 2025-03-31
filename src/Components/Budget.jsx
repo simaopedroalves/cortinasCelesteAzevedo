@@ -94,11 +94,10 @@ export default function Budget () {
 
     fetch("/", {
       method: "POST",
-      // headers: {
-      //   // "Content-type": "application/x-www-form-urlencoded",
-      //    "Accept": "application/x-www-form-urlencoded"
-      // },
-      // body: encodeFormData(formData),
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded",
+        //  "Accept": "application/x-www-form-urlencoded"
+      },
       body: formData,
     })
     .then(() => {
@@ -216,7 +215,7 @@ export default function Budget () {
           onChangeValue={handleChangeInput}
         />
 
-        <Input
+        {/* <Input
           type="file"
           label="Anexar fotos (local da cortina)"
           // value={userFormSubmission.placePhotos}
@@ -225,7 +224,7 @@ export default function Budget () {
           onChangeValue={handleChangeInput}
           multiple
           accept="image/*"
-        />
+        /> */}
 
         <Button type="submit">Pedir Orçamento</Button>
       </form>
