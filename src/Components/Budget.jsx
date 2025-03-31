@@ -94,10 +94,10 @@ export default function Budget () {
 
     fetch("/", {
       method: "POST",
-      headers: {
-        // "Content-type": "application/x-www-form-urlencoded",
-         "Accept": "application/x-www-form-urlencoded"
-      },
+      // headers: {
+      //   // "Content-type": "application/x-www-form-urlencoded",
+      //    "Accept": "application/x-www-form-urlencoded"
+      // },
       // body: encodeFormData(formData),
       body: formData,
     })
