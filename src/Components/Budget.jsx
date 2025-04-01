@@ -72,7 +72,7 @@ export default function Budget () {
       courtainPlace: courtainPlace,
       courtainColor: courtainColor,
       courtainType: courtainType,
-      placePhotos: placePhotos,
+      // placePhotos: placePhotos,
     }
     
 
@@ -98,7 +98,7 @@ export default function Budget () {
         "Content-type": "application/x-www-form-urlencoded",
         //  "Accept": "application/x-www-form-urlencoded"
       },
-      body: formData,
+      body: encodeFormData(formData),
     })
     .then(() => {
       alert("Orçamento enviado com sucesso!");
