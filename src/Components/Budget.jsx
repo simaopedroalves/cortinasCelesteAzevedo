@@ -14,7 +14,7 @@ export default function Budget () {
     courtainPlace: "",
     courtainColor: "",
     courtainType: "",
-    placePhotos: ""
+    // placePhotos: ""
   });
 
   function handleChangeInput(inputName, inputValue) {
@@ -59,7 +59,7 @@ export default function Budget () {
   function onSubmitForm (event) {
     event.preventDefault();
 
-    const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType, placePhotos} = userFormSubmission;
+    const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType} = userFormSubmission;
    
     const formData = {
       "form-name": "budget",

@@ -1,7 +1,7 @@
 
 export default function MenuOptions ({onclickOption}) {
 
-    const menuOptionsClasses = 'font-bold z-12 text-2xl my-6 text-white hover:text-beige text-center bg-transparent cursor-pointer';
+    const menuOptionsClasses = 'font-bold z-12 text-2xl lg:text-xl my-6 text-white hover:text-beige text-center bg-transparent cursor-pointer';
 
     const menuOptions = [
         'Início',
