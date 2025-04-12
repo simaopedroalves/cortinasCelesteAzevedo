@@ -15,6 +15,7 @@ export default function Footer ({handleClick}) {
 
     const footerContacts = [
         {name: 'Telemóvel', prefix: 'tel:', description: '937 402 642'},
+        {name: '', prefix: 'tel:', description: '919 853 774'},
         {name: 'Email', prefix: 'mailto:', description: 'cortinascelesteazevedo@gmail.com'},
         {name: 'Morada', prefix: '', description: 'V. N. de Famalicão'},
     ];
