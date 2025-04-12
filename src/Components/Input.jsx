@@ -57,7 +57,7 @@ export default function Input({
           }
           type={type}
           {...props}
-          required
+          // required
 
         />
       )}

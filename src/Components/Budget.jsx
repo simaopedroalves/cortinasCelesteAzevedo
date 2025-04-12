@@ -1,9 +1,11 @@
 import Button from "./Button.jsx";
 import Input from "./Input.jsx";
-import { useState } from "react";
+import React, { useState } from "react";
+import Dialog from "./Dialog.jsx";
 
 
 export default function Budget () {
+
   const [userFormSubmission, setUserFormSubmission] = useState({
     name: "",
     email: "",
@@ -14,14 +16,13 @@ export default function Budget () {
     courtainPlace: "",
     courtainColor: "",
     courtainType: "",
-    // placePhotos: ""
   });
 
+  const [dialog, setDialog] = useState(false);
+  const [thanksMessage, setThanksMessage] = useState(false);
+ 
+
   function handleChangeInput(inputName, inputValue) {
-
-    console.log(typeof(inputName), inputName, typeof(inputValue), inputValue);
-    console.log(userFormSubmission);
-
     
     inputName === "placePhotos" ?
     setUserFormSubmission((prevState) => {
@@ -40,13 +41,6 @@ export default function Budget () {
 
   }
 
-  // const [file, setFile] = useState([]);
-
-  // function handleChangeFile(event) {
-  //   setFile(event.files);  
-  // }
-
-
   // required to send form via netlify forms
   function encodeFormData(data) {
     return Object.keys(data)
@@ -56,11 +50,41 @@ export default function Budget () {
       .join("&");
   }
 
+  function handleCloseDialog () {
+    budgetDataSended.current = false;}
+
+
   function onSubmitForm (event) {
+
     event.preventDefault();
 
-    const {name, email, address, phoneNumber, courtainHeight, courtainWidth, courtainPlace, courtainColor, courtainType} = userFormSubmission;
-   
+    const {
+      name,
+      email,
+      address,
+      phoneNumber,
+      courtainHeight,
+      courtainWidth,
+      courtainPlace,
+      courtainColor,
+      courtainType,
+    } = userFormSubmission;
+    
+    if (
+      name.trim() === '' ||
+      email.trim() === '' ||
+      address.trim() === '' ||
+      phoneNumber.trim() === '' ||
+      courtainHeight.trim() === '' ||
+      courtainWidth.trim() === '' ||
+      courtainPlace.trim() === '' ||
+      courtainColor.trim() === '' ||
+      courtainType.trim() === ''
+    ) {
+      setDialog(true);
+      return;
+    }
+    
     const formData = {
       "form-name": "budget",
       name: name,
@@ -74,57 +98,57 @@ export default function Budget () {
       courtainType: courtainType,
       // placePhotos: placePhotos,
     }
-    
 
-        // // Create FormData for file uploads
-        // const formData = new FormData();
-        // formData.append("form-name", "budget");
-        
-        // // Append all form fields
-        // Object.entries(userFormSubmission).forEach(([key, value]) => {
-        //   if (key === "placePhotos" && value) {
-        //     // Handle multiple files
-        //     for (let i = 0; i < value.length; i++) {
-        //       formData.append(key, value[i]);
-        //     }
-        //   } else {
-        //     formData.append(key, value);
-        //   }
-        // });
+      fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+        body: encodeFormData(formData),
+      })
+      .then(() => {
+        setThanksMessage(true);
+        // alert("Orçamento enviado com sucesso!");
 
-    fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/x-www-form-urlencoded",
-        //  "Accept": "application/x-www-form-urlencoded"
-      },
-      body: encodeFormData(formData),
-    })
-    .then(() => {
-      alert("Orçamento enviado com sucesso!");
+        setUserFormSubmission({
+          name: "",
+          email: "",
+          address: "",
+          phoneNumber: "",
+          courtainHeight: "",
+          courtainWidth: "",
+          courtainPlace: "",
+          courtainColor: "",
+          courtainType: "",
+        });
+      })
+      .catch((error) => {
+        setDialog(true);
+        // alert("Ocorreu um erro ao enviar o seu Orçamento. Tente novamente.");
 
-      setUserFormSubmission({
-        name: "",
-        email: "",
-        address: "",
-        phoneNumber: "",
-        courtainHeight: "",
-        courtainWidth: "",
-        courtainPlace: "",
-        courtainColor: "",
-        courtainType: "",
-        // placePhotos: null
+        console.error(error);
       });
-      // setFile();
-    })
-    .catch((error) => {
-      alert("Ocorreu um erro ao enviar o seu Orçamento. Tente novamente.");
-
-      console.error(error);
-    });
   }
 
   return (
+    <>
+       {dialog && 
+       <Dialog buttonDescription="Fechar" closeDialog={() => setDialog(false)}>
+        <h1 className="font-bold">UPS!</h1>
+        <h3>Parece que os dados necessários para o seu orçamento estão inválidos.</h3>
+        <h3>Verifique, por favor, todos os dados inseridos e tente novamente.</h3>
+      </Dialog>
+     }
+
+    {thanksMessage && 
+    <Dialog  buttonDescription="Fechar" closeDialog={() => setThanksMessage(false)}>
+      <h1 className="font-bold">OBRIGADO!</h1>
+      <h3>O seu formulário foi enviado com sucesso!</h3>
+      <h3>Em breve entraremos em contacto consigo.</h3>
+    </Dialog>
+     }
+
+
     <section className="p-12 bg-gray md:p-28 ">
       <h1 className="text-beige text-3xl font-bold text-center">Orçamento</h1>
       {/* <p> Descrição sobre o que é o pedido de orçamento </p> */}
@@ -209,7 +233,7 @@ export default function Budget () {
         <Input
           label="Tipo de Tecido"
           select
-          selectOptions={["Linho", "Seda", "Outro"]}
+          selectOptions={["Selecionar", "Linho", "Seda", "Outro"]}
           value={userFormSubmission.courtainType}
           stateName="courtainType"
           onChangeValue={handleChangeInput}
@@ -226,8 +250,9 @@ export default function Budget () {
           accept="image/*"
         /> */}
 
-        <Button type="submit">Pedir Orçamento</Button>
+      <Button type="submit" onClick={onSubmitForm}>Pedir Orçamento</Button>
       </form>
     </section>
+    </>
   );
 }

@@ -5,6 +5,7 @@
   --color-cream: rgb(248, 240, 229);
   --color-beige: rgb(221, 168, 83);
   --color-gray: rgb(30, 32, 30);
+  /* --color-gray-two: rgba(30, 32, 30, 0.9); */
 }
 
 body {
