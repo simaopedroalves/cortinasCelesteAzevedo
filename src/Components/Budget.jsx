@@ -50,10 +50,6 @@ export default function Budget () {
       .join("&");
   }
 
-  function handleCloseDialog () {
-    budgetDataSended.current = false;}
-
-
   function onSubmitForm (event) {
 
     event.preventDefault();

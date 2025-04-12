@@ -49,12 +49,7 @@ export default function Input({
           className={inputClasses}
           id={label}
           name={stateName}
-          onChange={(event) => 
-            {type === 'file' ? 
-              onChangeValue(stateName, event.target.files) 
-              : onChangeValue(stateName, event.target.value)
-            }
-          }
+          onChange={(event) => {onChangeValue(stateName, event.target.value)}}
           type={type}
           {...props}
           // required
