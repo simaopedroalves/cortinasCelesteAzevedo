@@ -1,6 +1,7 @@
 import Input from "./Input.jsx";
 import { useState } from "react";
 import Button from "./Button.jsx";
+import Dialog from "./Dialog.jsx";
 
 export default function ContactUs() {
   const [userFormSubmission, setUserFormSubmission] = useState({
@@ -11,6 +12,7 @@ export default function ContactUs() {
   });
 
   const [message, setMessage] = useState("");
+  const [thanksMessage, setThanksMessage] = useState(false);
 
   function handleChangeInput(inputName, inputValue) {
     setUserFormSubmission((prevState) => {
@@ -35,7 +37,7 @@ export default function ContactUs() {
 
   function Message() {
     return (
-      <div className="bg-beige fixed top-0 bottom-0 left-0 right-0 z-10 grid items-center rounded-md">
+      <div className="bg-beige fixed top-0 bottom-0 left-0 right-0 z-2 grid items-center rounded-md">
         <p className="text-navy font-bold italic text-center uppercase">
           Impossível enviar!
         </p>
@@ -95,7 +97,8 @@ export default function ContactUs() {
       body: encodeFormData(formData),
     })
       .then(() => {
-        alert("Mensagem enviada com sucesso!");
+        setThanksMessage(true);
+        // alert("Mensagem enviada com sucesso!");
 
         setUserFormSubmission({
           userStateName: "",
@@ -113,6 +116,13 @@ export default function ContactUs() {
 
   return (
     <>
+      {thanksMessage && (
+        <Dialog buttonDescription="Fechar" closeDialog={() => setThanksMessage(false)}>
+          <h1 className="font-bold">Obrigado!</h1>
+          <h3>Mensagem Enviada!</h3>
+          <h3>Entraremos em contacto brevemente.</h3>
+        </Dialog>
+      )}
       {userFormSubmission.dataIsInvalid && <Message />}
       <section className="py-12 px-[10vw] justify-center bg-gray relative md:py-20 md:px-[20vw] lg:py-30 lg:px-[30vw]">
         <h1 className="text-beige text-3xl font-bold text-center md:text-6xl">

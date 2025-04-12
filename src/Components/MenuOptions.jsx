@@ -12,7 +12,7 @@ export default function MenuOptions ({onclickOption}) {
         'Termos e condições'
     ];
 
-    let menuClasses = 'z-11 transition-all duration-700 ease-in-out bg-gray/90 w-screen h-[100lvh] fixed top-0 gap-0 uppercase justify-center py-4 lg:gap-8 lg:py-auto lg:p-0 lg:block lg:flex lg:top-0 lg:h-min lg:bg-transparent lg:transition-none lg:duration-0 lg:ease-none';
+    let menuClasses = 'z-11 transition-all duration-700 ease-in-out bg-gray/90 w-screen h-screen fixed gap-0 uppercase justify-center content-center py-4 lg:gap-8 lg:py-auto lg:p-0 lg:block lg:flex lg:top-0 lg:h-min lg:bg-transparent lg:transition-none lg:duration-0 lg:ease-none';
 
     const menu = menuOptions.map((option, index) => (
         <li key={index} className={menuOptionsClasses} id={index} onClick={() => onclickOption(index)}>

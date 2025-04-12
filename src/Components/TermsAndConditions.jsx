@@ -116,7 +116,7 @@ export default function TermsAndConditions () {
         {Object.keys(termsAndConditionsObject).map((term) => (
         <div
             key={term}
-            className="border-2 border-beige p-4 my-2 rounded-lg grid gap-4 md:max-w-1/2 md:mx-auto"
+            className="border-2 border-beige p-4 my-2 rounded-lg grid gap-4 md:max-w-1/2 md:min-w-1/2 md:mx-auto"
         >
             <h3 className="text-beige font-bold underline text-lg">
               {termsAndConditionsObject[term].title}

@@ -13,7 +13,7 @@ export default function Input({
   let inputClasses = 'bg-cream/60 rounded-md w-full text-sm p-2 text-white placeholder:font-bold placeholder:text-navy/70';
 
   return (
-    <p className="grid gap-2">
+    <p className="grid gap-2 w-full lg:w-1/2 mx-auto">
       <label htmlFor={label} className="text-cream text-sm md:text-xl font-bold">
         {label}
       </label>
