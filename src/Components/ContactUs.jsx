@@ -185,7 +185,7 @@ export default function ContactUs() {
 
   function Message() {
     return (
-      <div className="bg-beige absolute top-24 bottom-0 mx-6 z-10 grid items-center justify-center rounded-md">
+      <div className="bg-beige fixed top-0 bottom-0 left-0 right-0 z-10 grid items-center rounded-md">
         <p className="text-navy font-bold italic text-center uppercase">
           Impossível enviar!
         </p>
@@ -210,6 +210,7 @@ export default function ContactUs() {
     let name = userFormSubmission.userStateName;
     let email = userFormSubmission.userStateEmail;
     let message = userFormSubmission.userStateMessage;
+console.log('enviar mensagem', name, email, message);
 
     // Validate inputs
     if (
@@ -301,7 +302,7 @@ export default function ContactUs() {
             stateName="userStateMessage"
             onChangeValue={handleChangeInput}
           />
-          <Button  type="submit">Enviar</Button>
+          <Button type="submit" onClick={onSubmitForm}>Enviar</Button>
         </form>
       </section>
     </>

@@ -26,7 +26,7 @@ export default function About () {
               alt="Fotografia de Celeste"
               className={imagesClass}
             />
-            <p className='text-justify md:px-40 md:text-xl lg:px-80 lg:text-2xl'>{text}</p>
+            <p className='text-justify md:px-40 md:text-md lg:px-[30vw] lg:text-xl'>{text}</p>
           </div>
         );
     }

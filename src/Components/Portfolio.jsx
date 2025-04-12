@@ -41,13 +41,13 @@ export default function Portfolio () {
         <h1 className=" text-beige text-3xl font-bold text-center mt-4 sm:mt-8">
           O nosso trabalho
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-screen mt-10 gap-12 md:gap-20 ">
+        <div className="grid grid-cols-1 sm:px-8 sm:grid-cols-2 md:grid-cols-3 w-screen mt-10 gap-12 md:gap-20 ">
           {portfolioImages.map((image, index) => (
             <img
               key={index}
               src={image}
               alt="Fotografia de cortinados instalados"
-              className="object-cover md:object-fit w-full h-full md:rounded-xl"
+              className="object-cover md:object-fit w-full h-full md:rounded-xl lg:h-[80vh]"
             />
           ))}
         </div>
