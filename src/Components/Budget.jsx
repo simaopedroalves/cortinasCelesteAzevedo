@@ -21,9 +21,8 @@ export default function Budget () {
   const [dialog, setDialog] = useState(false);
   const [thanksMessage, setThanksMessage] = useState(false);
  
-
   function handleChangeInput(inputName, inputValue) {
-    
+
     inputName === "placePhotos" ?
     setUserFormSubmission((prevState) => {
       return {
@@ -170,6 +169,8 @@ export default function Budget () {
           value={userFormSubmission.name}
           stateName="name"
           onChangeValue={handleChangeInput}
+          pattern="^[a-zA-Zà-ãáíó\s]+$"
+          title="Nome inválido!"
         />
         <Input
           type="email"

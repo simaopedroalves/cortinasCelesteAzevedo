@@ -10,7 +10,7 @@ export default function Input({
   ...props
 }) {
 
-  let inputClasses = 'bg-cream/60 rounded-md w-full text-sm p-2 text-white placeholder:font-bold placeholder:text-navy/70';
+  let inputClasses = 'invalid:bg-red-400 invalid:line-through bg-cream/60 rounded-md w-full text-sm p-2 text-white placeholder:font-bold placeholder:text-navy/70';
 
   return (
     <p className="grid gap-2 w-full lg:w-1/2 mx-auto">
@@ -52,8 +52,6 @@ export default function Input({
           onChange={(event) => {onChangeValue(stateName, event.target.value)}}
           type={type}
           {...props}
-          // required
-
         />
       )}
     </p>
