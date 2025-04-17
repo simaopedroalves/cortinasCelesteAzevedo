@@ -11,7 +11,7 @@ export default function HomePage () {
     return (
       <>
         <section className={sectionClasses}>
-          <h1 className="bg-cream/30 absolute z-9 mt-[50lvh] w-[100vw] py-6 text-center text-2xl md:text-4xl text-navy font-bold px-8 overflow-hidden">
+          <h1 className="bg-cream/30 absolute z-9 mt-[50lvh] w-[100vw] py-6 text-center text-2xl text-navy font-bold px-8 overflow-hidden">
             Transformamos o seu espaço com cortinados personalizados e feitos à
             medida
           </h1>
