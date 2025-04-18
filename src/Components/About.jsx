@@ -2,7 +2,7 @@ import myPhoto from '../assets/celeste-images/celeste-4.jpg';
 import myPhotoTwo from '../assets/celeste-images/celeste-5.jpg';
 import myPhotoThree from '../assets/celeste-images/celeste-2.jpg';
 
-const imagesClass = 'object-cover h-[80lvh] w-screen rounded-md md:w-1/4 mx-auto ';
+const imagesClass = 'object-contain h-[80lvh] w-screen rounded-md md:w-1/4 mx-auto ';
 const divClass = 'mx-auto px-6 text-cream grid items-center gap-8 justify-center md:gap-20';
 
 export default function About () {
